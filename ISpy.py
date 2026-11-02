@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox 
 import wordSearching
 import time
 import os
@@ -63,7 +64,10 @@ def find_entry(search_text):
 def run_word_search():
     entry_list = lb.get(0, tk.END)
     results = wordSearching.word_search(entry_list)
-    results.show(results)
+    if results:
+        results.show(results)
+    else:
+        messagebox.showwarning(title=None, message="No matching words detected")
 
 button = tk.Button(root, text="Test Run", width=25, command = run_word_search)
 button.pack()
