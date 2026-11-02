@@ -93,11 +93,11 @@ def program_run():
     entry_list = lb.get(0, tk.END)
     if is_running == True:
         status.configure(text="Time till next scan: "+str(time_left)+"    Images detected: "+str(images_saved))
-        print(time_left)
+        #print(time_left)
         if time_left <= 0:
             results = wordSearching.word_search(entry_list)
             if results:
-                print("A word was found")
+                #print("A word was found")
                 images_saved += 1
                 file_name = "word_detected("+str(images_saved)+").png"
                 output_path = output_folder / file_name

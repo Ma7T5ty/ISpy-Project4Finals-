@@ -11,6 +11,7 @@ def word_search(word_list):
     screenshot = pyscreenshot.grab()
     screenshot.save('sample_image.png')
     img = cv2.imread('sample_image.png')
+    fixed_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     processed_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
     data = pytesseract.image_to_data(
@@ -50,7 +51,7 @@ def word_search(word_list):
         h = int(data["height"][i])
 
         cv2.rectangle(
-            img,
+            fixed_img,
             (x, y),
             (x + w, y + h),
             (0, 0, 255),
@@ -58,7 +59,7 @@ def word_search(word_list):
         )
 
     if word_found == True:
-        regular_image = Image.fromarray(img)
+        regular_image = Image.fromarray(fixed_img)
         return regular_image
     else:
         return
